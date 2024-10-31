@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <form [formGroup]="forumForm" class="w-50">
+    <div class="mb-3">
+      <label class="form-label">Nom du Forum</label>
+      <input type="text" formControlName="name"  class="form-control" placeholder="form" >
+      <small class="text-danger" >Le nom est requis</small>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Description du Forum</label>
+      <textarea class="form-control" formControlName="description" ></textarea>
+      <small class="text-danger" >
+        <ng-container *ngIf="forumForm.controls ['description'].hasError('required')">
+          Ce champ est requis.
+        </ng-container>
+        <ng-container *ngIf="forumForm.controls['description'].hasError('minlength')">
+          Ce champ doit contenir au minimum 5 caractères
+        </ng-container>
+      </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+  </form>
+
+</div>
+<router-outlet />
